@@ -19,6 +19,8 @@ const verifyToken = (req, res, next) => {
     }
 }
 
+module.exports.verifyToken = verifyToken;
+
 module.exports.verifyTokenAndAuthorization = (req, res, next) => {
     //first verify token then check if id is same as token id or user is Admin
     verifyToken(req, res, () => {

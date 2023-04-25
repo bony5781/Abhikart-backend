@@ -2,6 +2,8 @@ const User = require('../modals/User');
 const CryptoJS = require('crypto-js'); //Encrypting and decrypting password)
 const jwt = require('jsonwebtoken');
 
+
+//REGISTER USER
 module.exports.registerUser = async (req, res) => {
     //create new user
     const newUser = new User({
@@ -19,6 +21,7 @@ module.exports.registerUser = async (req, res) => {
     }
 }
 
+//LOGIN USER
 module.exports.loginUser = async (req, res) => {
     try {
         //find user
@@ -51,6 +54,7 @@ module.exports.loginUser = async (req, res) => {
 
 }
 
+//UPDATE USER
 module.exports.updateUser = async (req, res, next) => {
     //If there is password encrypt it
     if (req.body.password) {
@@ -68,6 +72,7 @@ module.exports.updateUser = async (req, res, next) => {
     }
 }
 
+//DELETE USER
 module.exports.deleteUser = async (req, res) => {
     try {
         //Find by id and delte
@@ -78,6 +83,7 @@ module.exports.deleteUser = async (req, res) => {
     }
 }
 
+//GET USER(Only Admin)
 module.exports.getUserForAdmin = async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
@@ -88,6 +94,7 @@ module.exports.getUserForAdmin = async (req, res) => {
     }
 }
 
+//GET ALL USERS(Only Admin)
 module.exports.getAllUsersForAdmin = async (req, res) => {
     const query = req.query.new;
     try {
